@@ -5,7 +5,7 @@ namespace Notepad.Data
 {
     public static class DbInitializer
     {
-        public static void Initialize(NotepadContext context)
+        public static void Initialize(NotebookContext context)
         {
             context.Database.EnsureCreated();
 

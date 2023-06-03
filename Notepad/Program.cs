@@ -7,7 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-builder.Services.AddDbContext<NotepadContext>(options =>
+builder.Services.AddDbContext<NotebookContext>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("NotepadContext")), ServiceLifetime.Transient);
 
 builder.Services.AddTransient<INoteService, NoteService>();
@@ -18,7 +18,7 @@ using (var scope = app.Services.CreateScope())
 {
 	var services = scope.ServiceProvider;
 	
-	var context = services.GetRequiredService<NotepadContext>();
+	var context = services.GetRequiredService<NotebookContext>();
 	DbInitializer.Initialize(context);
 }
 

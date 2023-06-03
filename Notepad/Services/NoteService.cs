@@ -6,9 +6,9 @@ namespace Notepad.Services
 {
     public class NoteService : INoteService
     {
-        private readonly NotepadContext _context;
+        private readonly NotebookContext _context;
 
-        public NoteService(NotepadContext context)
+        public NoteService(NotebookContext context)
         {
             _context = context;
         }

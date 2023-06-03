@@ -3,12 +3,14 @@ using Notepad.Models;
 
 namespace Notepad.Data
 {
-    public class NotepadContext : DbContext
+    public class NotebookContext : DbContext
     {
-        public NotepadContext(DbContextOptions<NotepadContext> options) : base(options)
+        public NotebookContext(DbContextOptions<NotebookContext> options) : base(options)
         {
 
         }
+
+
 
         public DbSet<Note> Notes { get; set; }
 
