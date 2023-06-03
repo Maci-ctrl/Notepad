@@ -1,4 +1,5 @@
-﻿using Notepad.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using Notepad.Models;
 
 namespace Notepad.Data
 {
