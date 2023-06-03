@@ -15,7 +15,8 @@ namespace Notepad.Services
 
         public async Task Add(Note note)
         {
-            
+            note.DateCreated = DateTime.Now;
+            note.DateUpdated = note.DateCreated;
             await _context.Notes.AddAsync(note);
 
             await _context.SaveChangesAsync();
@@ -51,7 +52,7 @@ namespace Notepad.Services
             {
                 existingNote.Title = note.Title;
                 existingNote.Content = note.Content;
-                existingNote.DateUpdated = note.DateUpdated;
+                existingNote.DateUpdated = DateTime.Now;
                 await _context.SaveChangesAsync();
             }
         }
