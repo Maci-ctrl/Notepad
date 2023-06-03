@@ -5,16 +5,18 @@ namespace Notepad.Models
     public class Note
     {
         [Key]
-       // [DatebaseGeneratedAtrribute(DatabaseGeneratedOption.Identity)]
+        // [DatebaseGeneratedAtrribute(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
+
+        [Required]
         public string Title { get; set; }
+
+        [Required]
         public string Content { get; set; }
+
         public DateTime DateCreated { get; set; }
+
         public DateTime DateUpdated { get; set; }
 
-        public Note()
-        {
-            DateCreated = DateTime.Now;
-        }
     }
 }
