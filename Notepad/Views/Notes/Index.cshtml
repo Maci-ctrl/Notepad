@@ -1,0 +1,24 @@
+﻿@model IEnumerable<Note>
+
+<h2>Your Notes</h2>
+
+<table class="table mb-4">
+	<tr>
+		<th>
+			@Html.DisplayNameFor(model => model.Title)
+		</th>
+	</tr>
+	@foreach (var item in Model)
+	{
+		<tr>
+			<td>
+				@Html.DisplayFor(modelItem => item.Title)
+			</td>
+			<td>
+				@Html.ActionLink("Edit", "Edit", new { id = item.Id}) |
+				@Html.ActionLink("Delete", "Delete", new {id = item.Id})
+			</td>
+		</tr>
+	}
+</table>
+@Html.ActionLink("Create.New", "Create")
