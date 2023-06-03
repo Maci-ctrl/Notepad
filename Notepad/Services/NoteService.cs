@@ -28,7 +28,7 @@ namespace Notepad.Services
 
         public async Task<Note> Get(int id)
         {
-            return await _context.Notes.FirstOrDefaultAsync(n => n.Id == id )
+            return await _context.Notes.FirstOrDefaultAsync(n => n.Id == id);
         }
 
         public async Task<IEnumerable<Note>> GetAll(Note note)

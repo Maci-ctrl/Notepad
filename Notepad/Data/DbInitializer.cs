@@ -24,12 +24,12 @@ namespace Notepad.Data
 
             foreach (Note n in notes)
             {
-                context.Database.ExecuteSqlRaw("SET IDENTITY_INSERT dbo.Notepad_FlexDevAcademy ON");
+                context.Database.ExecuteSqlRaw("SET IDENTITY_INSERT dbo.Notes ON");
                 context.Notes.Add(n);
             }
             context.SaveChanges();
 
-            context.Database.ExecuteSqlRaw("SET IDENTITY_INSERT dbo.Notepad_FlexDevAcademy OFF");
+            context.Database.ExecuteSqlRaw("SET IDENTITY_INSERT dbo.Notes OFF");
 
 
 
