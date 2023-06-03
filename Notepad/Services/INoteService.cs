@@ -1,25 +1,18 @@
-﻿namespace Notepad.Services
+﻿using Notepad.Models;
+
+namespace Notepad.Services
 {
     public interface INoteService
     {
-        int Id { get; set; }
 
-        string Title { get; set; }
+        Task<Note> Get(int id);
 
-        string Content { get; set; }
+        Task GetAll(Note note);
 
-        DateTime DateCreate { get; set; }
+        Task Add(Note note);
 
-        DateTime DateUpdaet { get; set; }
+        Task Delete(int id);
 
-        void Get();
-
-        void GetAll();
-
-        void Add();
-
-        void Delete();
-
-        void Update();
+        Task Update(Note note);
     }
 }
