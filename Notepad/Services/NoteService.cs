@@ -13,6 +13,11 @@ namespace Notepad.Services
             _context = context;
         }
 
+        public NoteService() 
+        {
+
+        }
+
         public async Task Add(Note note)
         {
             note.DateCreated = DateTime.Now;
