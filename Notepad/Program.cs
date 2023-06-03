@@ -1,7 +1,11 @@
+using Notepad.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddTransient<INoteService, NoteService>();
 
 var app = builder.Build();
 
