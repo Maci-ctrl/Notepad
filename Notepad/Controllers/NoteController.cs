@@ -1,12 +1,14 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Notepad.Models;
+using Notepad.Services;
 
 namespace Notepad.Controllers
 {
 	public class NoteController : Controller
 	{
-		private readonly INotepadService _db;
+		private readonly INoteService _db;
 
-		public RestaurantsController(INotepadService db)
+		public NoteController(INoteService db)
 		{
 			_db = db;
 		}
@@ -40,7 +42,7 @@ namespace Notepad.Controllers
 
 
 		[HttpGet]
-		public async IActionResult Delete(int id)
+		public IActionResult Delete(int id)
 		{
 			var model = _db.Get(id);
 
@@ -53,7 +55,7 @@ namespace Notepad.Controllers
 
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public IActionResult Delete(int id)
+		public IActionResult Delete(int id, IFormCollection form)
 		{
 			_db.Delete(id);
 
