@@ -1,10 +1,10 @@
-﻿namespace Notepad.Models
+﻿namespace Notepad.Services
 {
-    public interface Interface
+    public interface INoteService
     {
         int Id { get; set; }
 
-        string Name { get; set; }
+        string Title { get; set; }
 
         string Content { get; set; }
 
@@ -12,7 +12,11 @@
 
         DateTime DateUpdaet { get; set; }
 
-        void Edit();
+        void Get();
+
+        void GetAll();
+
+        void Add();
 
         void Delete();
 
