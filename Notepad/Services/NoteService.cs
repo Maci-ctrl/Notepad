@@ -1,33 +1,52 @@
-﻿using Notepad.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using Notepad.Data;
+using Notepad.Models;
 
 namespace Notepad.Services
 {
     public class NoteService : INoteService
     {
-        
-        public Task Add(Note note)
+        private readonly NotepadContext _context;
+        public async Task Add(Note note)
         {
-            throw new NotImplementedException();
+            
+            await _context.Notes.AddAsync(note);
+
+            await _context.SaveChangesAsync();
         }
 
-        public Task Delete(int id)
+        public async Task Delete(int id)
         {
-            throw new NotImplementedException();
+            var note = await Get(id);
+
+            if (note != null)
+            {
+                _context.Notes.Remove(note);
+                await _context.SaveChangesAsync();
+            }
         }
 
-        public Task<Note> Get(int id)
+        public async Task<Note> Get(int id)
         {
-            throw new NotImplementedException();
+            return await _context.Notes.FirstOrDefaultAsync(n => n.Id == id )
         }
 
-        public Task GetAll(Note note)
+        public async Task<IEnumerable<Note>> GetAll(Note note)
         {
-            throw new NotImplementedException();
+            return await _context.Notes.OrderBy(n => n.Title).ToListAsync();
         }
 
-        public Task Update(Note note)
+        public async Task Update(Note note)
         {
-            throw new NotImplementedException();
+            var existingNote = await Get(note.Id);
+
+            if (existingNote != null)
+            {
+                existingNote.Title = note.Title;
+                existingNote.Content = note.Content;
+                existingNote.DateUpdated = note.DateUpdated;
+                await _context.SaveChangesAsync();
+            }
         }
     }
 }
