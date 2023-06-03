@@ -8,6 +8,11 @@ namespace Notepad.Data
         {
             context.Database.EnsureCreated();
 
+            if(context.Notes.Any())
+            {
+                return;
+            }
+
             var notes = new Note[]
             {
                 new Note {Id = 0, Title = "Note 1 Title", Content = "Note 1 Content", DateCreated= new DateTime(2023,05,30,09,30,00), DateUpdated = new DateTime(2023,05,30,09,45,00)},
