@@ -16,7 +16,15 @@ namespace Notepad.Data
                 new Note {Id = 0, Title = "Note 4 Title", Content = "Note 4 Content", DateCreated= new DateTime(2023,06,2,09,30,00), DateUpdated = new DateTime(2023,06,2,09,45,00)},
             };
 
+            foreach (Note n in notes)
+            {
+                context.Database.ExecuteSqlRaw("SET IDENTITY_INSERT dbo.Notepad_FlexDevAcademy ON");
+                context.Notes.Add(n);
+            }
             context.SaveChanges();
+
+            context.Database.ExecuteSqlRaw("SET IDENTITY_INSERT dbo.Notepad_FlexDevAcademy OFF");
+
 
         }
     }
