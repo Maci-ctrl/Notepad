@@ -38,7 +38,7 @@ namespace Notepad.Services
             return x;
         }
 
-        public async Task<IEnumerable<Note>> GetAll(Note note)
+        public async Task<IEnumerable<Note>> GetAll()
         {
             return await _context.Notes.OrderBy(n => n.Title).ToListAsync();
         }

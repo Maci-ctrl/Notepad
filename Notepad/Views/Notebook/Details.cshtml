@@ -1,0 +1,31 @@
+﻿@model Note
+
+{
+	@ViewBag.Title = "Details";
+}
+
+<h2>@Html.DisplayFor(model => model.Title)</h2>
+<hr/>
+
+<div>
+	<dl>
+		@Html.DisplayNameFor(model => model.Title)
+	</dl>
+	<dd>
+		@Html.DisplayFor(model => model.Title)
+	</dd>
+	<dt>
+		@Html.DisplayNameFor(model => model.Content)
+	</dt>
+	<dd>
+		@Html.DisplayFor(model => model.Content)
+	</dd>
+	<dt>
+		@Html.DisplayNameFor(model => model.DateUpdated)
+	</dt>
+	<dd>
+		@Html.DisplayFor(model => model.DateUpdated)
+	</dd>
+</div>
+@Html.ActionLink("Edit", "Edit", new {id = Model.Id})
+@Html.ActionLink("Back to List", "Index");

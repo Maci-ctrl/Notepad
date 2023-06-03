@@ -9,15 +9,9 @@ namespace Notepad.Controllers
 	{
 		private readonly INoteService _db;
 
-		public IActionResult Index()
+		public async Task<IActionResult> Index()
 		{
-			var notes = new Note[]
-				{
-						new Note {Id = 1, Title = "Note 1 Title", Content = "Note 1 Content", DateCreated= new DateTime(2023,05,30,09,30,00), DateUpdated = new DateTime(2023,05,30,09,45,00)},
-						new Note {Id = 2, Title = "Note 2 Title", Content = "Note 2 Content", DateCreated= new DateTime(2023,05,31,09,30,00), DateUpdated = new DateTime(2023,05,31,09,45,00)},
-						new Note {Id = 3, Title = "Note 3 Title", Content = "Note 3 Content", DateCreated= new DateTime(2023,06,1,09,30,00), DateUpdated = new DateTime(2023,06,1,09,45,00)},
-						new Note {Id = 4, Title = "Note 4 Title", Content = "Note 4 Content", DateCreated= new DateTime(2023,06,2,09,30,00), DateUpdated = new DateTime(2023,06,2,09,45,00)},
-				};
+			var notes = await _db.GetAll();
 			return View(notes);
 		}
 
@@ -36,6 +30,12 @@ namespace Notepad.Controllers
 		[ValidateAntiForgeryToken]
 		public async Task<IActionResult> Create(Note note)
 		{
+			if (ModelState.IsValid)
+			{
+				await _db.Add(note);
+
+				return RedirectToAction("Index");
+			}
 			return View();
 		}
 
@@ -50,6 +50,13 @@ namespace Notepad.Controllers
 		[ValidateAntiForgeryToken]
 		public async Task<IActionResult> Edit(Note note)
 		{
+			if (ModelState.IsValid)
+			{
+				await _db.Update(note);
+
+				return RedirectToAction("Index");
+			}
+
 			return View();
 		}
 
@@ -57,7 +64,7 @@ namespace Notepad.Controllers
 		[HttpGet]
 		public async Task<IActionResult> Delete(int id)
 		{
-			var model = _db.Get(id);
+			var model = await _db.Get(id);
 
 			if (model == null)
 			{
@@ -70,9 +77,21 @@ namespace Notepad.Controllers
 		[ValidateAntiForgeryToken]
 		public async Task<IActionResult> Delete(int id, IFormCollection form)
 		{
-			_db.Delete(id);
+			await _db.Delete(id);
 
 			return RedirectToAction("Index");
+		}
+
+		[HttpGet]
+		public async Task<IActionResult> Details(int id)
+		{
+			var model = await _db.Get(id);
+
+			if (model == null)
+			{
+				return View("NotFound");
+			}
+			return View(model);
 		}
 	}
 }
