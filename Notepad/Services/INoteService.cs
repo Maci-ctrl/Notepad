@@ -7,7 +7,7 @@ namespace Notepad.Services
 
         Task<Note> Get(int id);
 
-        Task GetAll(Note note);
+        Task<IEnumerable<Note>> GetAll(Note note);
 
         Task Add(Note note);
 
