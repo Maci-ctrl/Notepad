@@ -26,6 +26,7 @@ namespace Notepad.Data
             context.Database.ExecuteSqlRaw("SET IDENTITY_INSERT dbo.Notepad_FlexDevAcademy OFF");
 
 
+
         }
     }
 }
