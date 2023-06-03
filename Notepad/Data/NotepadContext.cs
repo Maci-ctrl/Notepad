@@ -14,10 +14,12 @@ namespace Notepad.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Note>(entity =>);
+            modelBuilder.Entity<Note>(entity =>
             {
-                
-            }
+                entity.HasKey(n => n.Id);
+                entity.Property(n => n.Id).HasColumnName("Id").HasComment("PrimaryKey");
+            });
+            base.OnModelCreating(modelBuilder);
         }
     }
 }
