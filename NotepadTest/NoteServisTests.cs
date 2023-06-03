@@ -32,5 +32,7 @@ namespace Notepad.Test
 			//Act
 			Assert.That(noteService.Get(note.Id) != null);
 		}
+
+
 	}
 }
