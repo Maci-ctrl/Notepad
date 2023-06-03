@@ -7,6 +7,12 @@ namespace Notepad.Services
     public class NoteService : INoteService
     {
         private readonly NotepadContext _context;
+
+        public NoteService(NotepadContext context)
+        {
+            _context = context;
+        }
+
         public async Task Add(Note note)
         {
             
@@ -28,7 +34,8 @@ namespace Notepad.Services
 
         public async Task<Note> Get(int id)
         {
-            return await _context.Notes.FirstOrDefaultAsync(n => n.Id == id);
+            var x = await _context.Notes.FirstOrDefaultAsync(n => n.Id == id);
+            return x;
         }
 
         public async Task<IEnumerable<Note>> GetAll(Note note)
