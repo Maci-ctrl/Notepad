@@ -5,36 +5,37 @@
 }
 
 <h2>Edit data for note @Html.DisplayFor(model => model.Title)</h2>
-<hr/>
+<hr />
 
 @using (Html.BeginForm())
 {
 	@Html.AntiForgeryToken()
 
-		<div class="Form-horizontal">
+	<div class="Form-horizontal">
+
 		@Html.ValidationSummary(true, "", new {@class = "text-danger"})
 		@Html.HiddenFor(model => model.Id)
 
-			<div class="form-group mb-3">
-			@Html.LabelFor(model => model.Title, htmlAttributes: new{@class = "control-label col-md-2"})
-				<div class="col-md-10">
+		<div class="form-group mb-3">
+			<h4>Edit title:</h4>
+			<div class="col-md-10">
 				@Html.EditorFor(model => model.Title, new {AddHtmlAttributeValue=new {@class = "form-control"}})
 				@Html.ValidationMessageFor(model => model.Title, "", new {@class = "text-danger"})
-				</div>
 			</div>
-
-			<div class="form-group mb-3">
-				@Html.LabelFor(model => model.Content, htmlAttributes: new{@class = "control-label col-md-2"})
-				<div class="col-md-10">
-				@Html.EditorFor(model => model.Content, new {AddHtmlAttributeValue=new {@class = "form-control"}})
-				@Html.ValidationMessageFor(model => model.Content, "", new {@class = "text-danger"})
-				</div>
-			</div>
-
-				<div class="form-group my-3">
-					<input type="submit" value="Save" class="btn btn-primary" />
-				</div>
 		</div>
+
+		<div class="form-group mb-3">
+			<h4>Edit content:</h4>
+			<div class="col-md-10">
+				@Html.EditorFor(model => model.Content, new {AddHtmlAttributeValue=new {@class = "form-control "}})
+				@Html.ValidationMessageFor(model => model.Content, "", new {@class = "text-danger"})
+			</div>
+		</div>
+
+		<div class="form-group my-3">
+			<input type="submit" value="Save" class="btn btn-primary" />
+		</div>
+	</div>
 
 	@Html.ActionLink("Back to List", "Index")
 }
