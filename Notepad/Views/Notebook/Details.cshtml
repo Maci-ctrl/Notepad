@@ -4,31 +4,31 @@
 	ViewBag.Title = "Details";
 }
 
-<div>
-	<div class="card">
-		<h2>@Html.DisplayFor(model => model.Title)</h2>
-		<hr />
 
+<div class="card">
+	<h2 class="card-header">@Html.DisplayFor(model => model.Title)</h2>
+	<p class="content-view card-body">
+		@Html.DisplayFor(model => model.Content)
+	</p>
 
-		<dd>
-			@Html.DisplayFor(model => model.Content)
-		</dd>
-	</div>
-
-	<table class="table-30">
-		<tr>
-			<th>Date Created</th>
-			<th>Date Updated</th>
-		</tr>
-
-		<tr>
-			<td>@Html.DisplayFor(model => model.DateCreated)</td>
-			<td>@Html.DisplayFor(model => model.DateUpdated)</td>
-		</tr>
-	</table>
+	<dl class="card-footer mb-2">
+		<dd>Created: @Html.DisplayFor(model => model.DateCreated)</dd>
+		<dd>Updated: @Html.DisplayFor(model => model.DateUpdated)</dd>
+	</dl>
 </div>
 
-@Html.ActionLink("Delete", "Delete", new {id = Model.Id})
-@Html.ActionLink("Edit", "Edit", new {id = Model.Id})
-@Html.ActionLink("Back to List", "Index")
+<div class=" my-2">
+
+	<a href="~/Notebook/Index" class="btn btn-primary btn-view">
+		Back to list
+	</a>
+
+	<a href="~/Notebook/Edit" class="btn btn-primary btn-view">
+		Edit
+	</a>
+
+	<a href="~/Notebook/Delete" class="btn btn-danger  btn-view">
+		Delete
+	</a>
+
 </div>
