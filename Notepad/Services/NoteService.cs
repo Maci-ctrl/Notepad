@@ -20,8 +20,10 @@ namespace Notepad.Services
 
         public async Task Add(Note note)
         {
+
             note.DateCreated = DateTime.Now;
             note.DateUpdated = note.DateCreated;
+
             await _context.Notes.AddAsync(note);
 
             await _context.SaveChangesAsync();

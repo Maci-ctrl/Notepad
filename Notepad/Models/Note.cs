@@ -8,7 +8,6 @@ namespace Notepad.Models
        
 
         [Key]
-        // [DatebaseGeneratedAtrribute(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
         [Required]
