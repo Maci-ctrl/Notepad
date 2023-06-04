@@ -1,4 +1,6 @@
+
 html {
+
   font-size: 14px;
 }
 
@@ -18,5 +20,13 @@ html {
 }
 
 body {
+
   margin-bottom: 60px;
+}
+
+.btn-50 {
+    width: 30%;
+    min-width: 300px;
+    
+
 }
