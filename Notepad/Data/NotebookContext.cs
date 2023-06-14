@@ -5,11 +5,16 @@ namespace Notepad.Data
 {
     public class NotebookContext : DbContext
     {
-        public NotebookContext(DbContextOptions<NotebookContext> options) : base(options)
+        public NotebookContext() 
         {
 
         }
 
+        
+        public NotebookContext(DbContextOptions<NotebookContext> options) : base(options)
+        {
+
+        }
 
 
         public DbSet<Note> Notes { get; set; }
@@ -22,6 +27,15 @@ namespace Notepad.Data
                 entity.Property(n => n.Id).HasColumnName("Id").HasComment("PrimaryKey");
             });
             base.OnModelCreating(modelBuilder);
+        }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            if(!optionsBuilder.IsConfigured)
+            {
+                optionsBuilder.UseSqlServer("NotepadContext");
+                base.OnConfiguring(optionsBuilder);
+            }
         }
     }
 }

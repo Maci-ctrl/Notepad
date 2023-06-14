@@ -9,7 +9,7 @@ namespace Notepad.Services
 
         Task<IEnumerable<Note>> GetAll();
 
-        Task Add(Note note);
+        Task Add(string title, string content);
 
         Task Delete(int id);
 

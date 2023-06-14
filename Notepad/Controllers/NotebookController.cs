@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
+using Notepad.Data;
 using Notepad.Models;
 using Notepad.Services;
 
@@ -9,16 +10,21 @@ namespace Notepad.Controllers
     {
         private readonly INoteService _db;
 
+        public NotebookContext NotebookContext { get; set; }
+
+
+
         public async Task<IActionResult> Index()
         {
             var notes = await _db.GetAll();
-            return View(notes);
+            return View("Index",notes);
         }
 
         public NotebookController(INoteService db)
         {
             _db = db;
         }
+
 
         [HttpGet]
         public async Task<IActionResult> Create()
@@ -28,12 +34,16 @@ namespace Notepad.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(Note note)
+        public async Task<IActionResult> Create(string title, string content)
         {
             try
             {
-                await _db.Add(note);
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    await _db.Add(title, content);
+                    return RedirectToAction("Index");
+                }
+                return View();
             }
             catch (Exception ex)
             {

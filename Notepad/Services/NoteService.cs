@@ -18,11 +18,9 @@ namespace Notepad.Services
 
         }
 
-        public async Task Add(Note note)
+        public async Task Add(string title, string content)
         {
-
-            note.DateCreated = DateTime.Now;
-            note.DateUpdated = note.DateCreated;
+            Note note = new Note(title, content);
 
             await _context.Notes.AddAsync(note);
 
@@ -42,13 +40,14 @@ namespace Notepad.Services
 
         public async Task<Note> Get(int id)
         {
+            
             var x = await _context.Notes.FirstOrDefaultAsync(n => n.Id == id);
             return x;
         }
 
         public async Task<IEnumerable<Note>> GetAll()
         {
-            return await _context.Notes.OrderBy(n => n.Title).ToListAsync();
+            return await _context.Notes.OrderByDescending(n => n.DateUpdated).ToListAsync();
         }
 
         public async Task Update(Note note)

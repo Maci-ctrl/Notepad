@@ -19,5 +19,16 @@ namespace Notepad.Models
         public DateTime DateCreated { get; set; }
 
         public DateTime DateUpdated { get; set; }
+
+        public Note() { }
+
+        public Note(string title, string content)
+        {
+            
+            Title = title;
+            Content = content;
+            DateCreated = DateTime.Now;
+            DateUpdated = DateCreated;
+        }
 	}
 }
