@@ -1,5 +1,27 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿
+
+<div class="container my-5">
+    <h6> Fill out all necesary fields</h6>
+    <form asp-action="SingIn">
+
+        <div class="mb-3">
+            <label>Name:</label>
+            <input class="from-control" type="text" aps-for="Name" />
+        </div>
+        <div class="mb-3">
+            <label>Last Name:</label>
+            <input class="from-control" type="text" aps-for="LastName" />
+        </div>
+        <div class="mb-3">
+            <label>Email:</label>
+            <input class="from-control" type="text" aps-for="Email" />
+        </div>
+        <div class="mb-3">
+            <label>Email:</label>
+            <input class="from-control" type="text" aps-for="BirthYear" />
+        </div>
+        <button class="btn btn-primary" type="submit">Send data</button>
+
+
+    </form>
+</div>
