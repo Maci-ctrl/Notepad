@@ -8,5 +8,17 @@ namespace Notepad.Controllers
         {
             return View();
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Index(string firstName, string lastName, string email, DateOnly birthDate)
+        {
+            if (!ModelState.IsValid)
+            {
+
+                return View();
+            }
+            return View();
+        }
     }
 }
