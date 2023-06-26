@@ -15,6 +15,7 @@ internal class Program
         options.UseSqlServer(builder.Configuration.GetConnectionString("NotepadContext")), ServiceLifetime.Transient);
 
         builder.Services.AddTransient<INoteService, NoteService>();
+        builder.Services.AddTransient<IFormService, FormService>();
 
         var app = builder.Build();
 

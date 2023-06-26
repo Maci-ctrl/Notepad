@@ -18,6 +18,7 @@ namespace Notepad.Data
 
 
         public DbSet<Note> Notes { get; set; }
+        public DbSet<Form> Forms { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -26,6 +27,12 @@ namespace Notepad.Data
                 entity.HasKey(n => n.Id);
                 entity.Property(n => n.Id).HasColumnName("Id").HasComment("PrimaryKey");
             });
+            modelBuilder.Entity<Form>(entity =>
+            {
+                entity.HasKey(n => n.Id);
+                entity.Property(n => n.Id).HasColumnName("Id").HasComment("PrimaryKey");
+            });
+            
             base.OnModelCreating(modelBuilder);
         }
 
