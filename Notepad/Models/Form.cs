@@ -21,7 +21,7 @@ namespace Notepad.Models
 
         public Form (string firstName, string lastName, string email, DateOnly dateBirth)
         {
-            _id++;
+            
             FirstName = firstName;
             LastName = lastName;
             Email = email;

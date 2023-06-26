@@ -12,9 +12,13 @@ internal class Program
         builder.Services.AddControllersWithViews();
 
         builder.Services.AddDbContext<NotebookContext>(options =>
-        options.UseSqlServer(builder.Configuration.GetConnectionString("NotepadContext")), ServiceLifetime.Transient);
+        options.UseSqlServer(builder.Configuration.GetConnectionString("NotepadContext")), ServiceLifetime.Transient); 
+        
+        builder.Services.AddDbContext<FormContext>(options =>
+        options.UseSqlServer(builder.Configuration.GetConnectionString("FormContext")), ServiceLifetime.Transient);
 
         builder.Services.AddTransient<INoteService, NoteService>();
+        builder.Services.AddTransient<IFormService, FormService>();
 
 
         var app = builder.Build();
@@ -24,7 +28,9 @@ internal class Program
             var services = scope.ServiceProvider;
 
             var context = services.GetRequiredService<NotebookContext>();
+            var context2 = services.GetRequiredService<FormContext>();
             DbInitializer.InitializeAsync(context);
+            DbInitializer.InitializeAsync(context2);
         }
 
         // Configure the HTTP request pipeline.
