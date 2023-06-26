@@ -8,7 +8,7 @@ namespace Notepad.Services
 
         Task<Form> Get(int id);
 
-        Task Add(string firstName, string lastName, string email, DateOnly birthDate);
+        Task Add(string firstName, string lastName, string email, DateTime birthDate);
 
         Task Delete(int id);
 

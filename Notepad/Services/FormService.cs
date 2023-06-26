@@ -1,12 +1,18 @@
-﻿using Notepad.Models;
+﻿using Notepad.Data;
+using Notepad.Models;
 
 namespace Notepad.Services
 {
     public class FormService : IFormService
     {
-        public Task Add(string firstName, string lastName, string email, DateOnly birthDate)
+        private readonly NotebookContext _context;
+
+        public async Task Add(string firstName, string lastName, string email, DateTime birthDate)
         {
-            throw new NotImplementedException();
+            Form form = new Form(firstName, lastName, email, birthDate);
+
+            await _context.AddAsync(form);
+            await _context.SaveChangesAsync();
         }
 
         public Task Delete(int id)

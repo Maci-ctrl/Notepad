@@ -4,7 +4,8 @@ namespace Notepad.Models
 {
     public class Form
     {
-        private int _id { get; set; }
+        [Key]
+        public int Id { get; set; }
 
         [Required]
         public string FirstName { get; set; }
@@ -16,11 +17,11 @@ namespace Notepad.Models
         public string  Email { get; set; }
 
         [Required]
-        public DateOnly DateBirth { get; set; }
+        public DateTime DateBirth { get; set; }
 
-        public Form (string firstName, string lastName, string email, DateOnly dateBirth)
+        public Form (string firstName, string lastName, string email, DateTime dateBirth)
         {
-            _id++;
+            
             FirstName = firstName;
             LastName = lastName;
             Email = email;
