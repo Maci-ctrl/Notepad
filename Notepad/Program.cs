@@ -16,6 +16,7 @@ internal class Program
 
         builder.Services.AddTransient<INoteService, NoteService>();
 
+
         var app = builder.Build();
 
         using (var scope = app.Services.CreateScope())

@@ -4,7 +4,8 @@ namespace Notepad.Models
 {
     public class Form
     {
-        private int _id { get; set; }
+        [Key]
+        public int Id { get; set; }
 
         [Required]
         public string FirstName { get; set; }
